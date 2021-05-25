@@ -1,0 +1,25 @@
+name: Pipeline of staging
+
+on: 
+  push:
+    branchs: ["develop"]
+  
+jobs:
+  build:
+    run-os: ubuntu-latest
+    stratege:
+      matrix:
+        node-version: [14.x]
+    
+    steps:
+      - uses: actions/checkout@v2
+   
+      - name: Using node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install modules of project
+        run: npm install --only=production
+      
+        run: echo "Hello world"
