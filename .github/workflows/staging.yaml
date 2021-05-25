@@ -2,7 +2,7 @@ name: Pipeline of staging
 
 on: 
   push:
-    branchs: ["develop"]
+    branches: ["develop"]
   
 jobs:
   build:
@@ -19,4 +19,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install modules of project
         run: npm install --only=production
+        
+      - name: Say hello world  
         run: echo 'Hello world'
