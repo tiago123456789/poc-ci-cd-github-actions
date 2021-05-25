@@ -22,3 +22,6 @@ jobs:
         
       - name: Say hello world  
         run: echo 'Hello world'
+        
+      - name: Create pem file
+        run: echo ${{ secrets.KEY_PEM_EC2 }} > key.pem
