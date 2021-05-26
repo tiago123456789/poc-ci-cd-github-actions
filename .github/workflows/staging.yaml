@@ -23,7 +23,7 @@ jobs:
 
       - name: Set permission
         run: |
-          sudo chmod 400 ./key.pem
+          chmod 400 ./key.pem
 
       - name: Connect in ssh ec2
         run: |
