@@ -21,7 +21,11 @@ jobs:
       - name: Create pem file
         run: echo "${{ secrets.KEY_PEM_EC2 }}" > key.pem
 
+      - name: Set permission
+        run: |
+          sudo chmod 400 ./key.pem
+
       - name: Connect in ssh ec2
         run: |
-          ssh -i "${{ secrets.KEY_PEM_EC2 }}" ubuntu@3.89.228.84 'cd app && sh ./deploy.staging.sh'
+          ssh -i ./key.pem ubuntu@3.89.228.84 'cd app && sh ./deploy.staging.sh'
  
