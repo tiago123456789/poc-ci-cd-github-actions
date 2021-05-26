@@ -25,3 +25,8 @@ jobs:
         
       - name: Create pem file
         run: echo "${{ secrets.KEY_PEM_EC2 }}" > key.pem
+
+      - name: Connect in ssh ec2
+        run: |
+          ssh -i ./ec2_fundamentals.pem ubuntu@3.89.228.84 'cd app && sh ./deploy.staging.sh'
+ 
