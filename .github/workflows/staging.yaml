@@ -1,4 +1,4 @@
-name: Pipeline of staging
+name: Pipeline of production
 
 on: 
   push:
@@ -27,8 +27,8 @@ jobs:
       - name: update staging environment
         uses: appleboy/ssh-action@master
         with:
-          host: 3.89.228.84
-          username: ubuntu
+          host: ${{ secrets.IP_STAGING }}
+          username: ${{ secrets.USER_STAGING }}
           key: ${{ secrets.KEY_PEM_EC2 }}
           script: sh ./app/deploy.staging.sh
 
