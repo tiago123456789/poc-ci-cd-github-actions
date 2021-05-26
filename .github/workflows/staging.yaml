@@ -27,6 +27,6 @@ jobs:
           host: 3.89.228.84
           username: ubuntu
           key: ${{ secrets.KEY_PEM_EC2 }}
-          script: sh ../../deploy.staging.sh
+          script: sh ./deploy.staging.sh
 
  
