@@ -20,4 +20,13 @@ jobs:
           key: ${{ secrets.KEY_PEM_EC2 }}
           script: sh ./app/deploy.staging.sh
 
+      - name: notify progress
+        if: always()
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: "840023642867105813"
+          webhook_token: "h0ntJCEQtKQMy08O4h4EHvA8LPS8ry8jT6hhimt8Yia2l6tVmoDzJXKWraq3vHv0u_jK"
+          message: The deploy executed ${{ job.status }}.
+
+
  
