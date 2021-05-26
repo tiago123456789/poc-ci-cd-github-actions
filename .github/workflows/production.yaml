@@ -1,0 +1,35 @@
+name: Pipeline of production
+
+on: 
+  push:
+    branches: ["master"]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Using node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+        
+      - name: install modules of project
+        run: npm install
+      
+      - name: run tests of project
+        run: npm run test
+        
+      - name: update staging environment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.IP_STAGING }}
+          username: ${{ secrets.USER_STAGING }}
+          key: ${{ secrets.KEY_PEM_EC2 }}
+          script: sh ./app/deploy.staging.sh
+
+ 
