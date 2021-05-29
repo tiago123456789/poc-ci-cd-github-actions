@@ -4,7 +4,7 @@ npm install --only=production
 cd app
 git fetch
 git checkout master
-git pull origin master
-./node_modules/.bin/pm2 delete all
-npm run start
+TAG=$(git describe --tags --abbrev=0)
+git checkout $TAG
+./node_modules/.bin/pm2 restart all
 ./node_modules/.bin/pm2 save
