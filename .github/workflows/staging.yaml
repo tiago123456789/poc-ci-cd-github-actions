@@ -23,7 +23,7 @@ jobs:
       
       - name: run tests of project
         run: npm run test
-        
+
       - name: update staging environment
         uses: appleboy/ssh-action@master
         with:
@@ -36,8 +36,8 @@ jobs:
         if: always()
         uses: appleboy/discord-action@master
         with:
-          webhook_id: "840023642867105813"
-          webhook_token: "h0ntJCEQtKQMy08O4h4EHvA8LPS8ry8jT6hhimt8Yia2l6tVmoDzJXKWraq3vHv0u_jK"
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           message: The staging pipeline executed ${{ job.status }}.
 
   
