@@ -1,9 +1,5 @@
-name: Pipeline of production
+name: Rollback of production environment
 
-on: 
-  release:
-    types: [published]
-  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +11,7 @@ jobs:
           host: ${{ secrets.IP_PRODUCTION }}
           username: ${{ secrets.USER_STAGING }}
           key: ${{ secrets.KEY_PEM_EC2 }}
-          script: sh ./app/deploy.production.sh
+          script: sh ./app/rollback.production.sh
 
       - name: notify progress
         if: always()
