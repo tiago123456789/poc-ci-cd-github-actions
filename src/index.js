@@ -4,7 +4,7 @@ const app = require("express")();
 
 app.get("/", (request, response) => {
     response.json({
-        message: "V9 Poc CI/CD using Github Actions is working!!!"
+        message: "V10 Poc CI/CD using Github Actions is working!!!"
     })
 })
 
