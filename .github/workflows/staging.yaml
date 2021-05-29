@@ -1,4 +1,4 @@
-name: Pipeline of production
+name: Deploy staging environment
 
 on: 
   push:
@@ -12,18 +12,6 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Using node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-        
-      - name: install modules of project
-        run: npm install
-      
-      - name: run tests of project
-        run: npm run test
-        
       - name: update staging environment
         uses: appleboy/ssh-action@master
         with:
@@ -40,3 +28,4 @@ jobs:
           webhook_token: "h0ntJCEQtKQMy08O4h4EHvA8LPS8ry8jT6hhimt8Yia2l6tVmoDzJXKWraq3vHv0u_jK"
           message: The staging pipeline executed ${{ job.status }}.
 
+  
