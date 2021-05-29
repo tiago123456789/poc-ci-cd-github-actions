@@ -1,15 +1,12 @@
 name: Pipeline of production
 
 on: 
-  push:
-    branches: ["master"]
+  release:
+    types: [published]
   
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
 
     steps:
       - name: update staging environment
