@@ -1,7 +1,8 @@
 name: Rollback of production environment
 
 on: 
-
+  push: []
+    
 jobs:
   build:
     runs-on: ubuntu-latest
