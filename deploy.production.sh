@@ -2,7 +2,9 @@
 
 npm install --only=production
 cd app
-git pull origin develop
+git fetch
+git checkout master
+git pull origin master
 ./node_modules/.bin/pm2 delete all
 npm run start
 ./node_modules/.bin/pm2 save
